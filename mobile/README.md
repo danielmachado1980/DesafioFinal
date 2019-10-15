@@ -1,2 +1,2 @@
 # meetapp
-Project RN for RocketSeat Certification
+Project React Native for RocketSeat Certification
