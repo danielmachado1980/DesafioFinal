@@ -1,6 +1,7 @@
 import app from './app';
 import redisConfig from './config/redis';
 
+<<<<<<< HEAD
 const redis = require('redis');
 
 const redisClient = redis.createClient({ host: redisConfig.host, port: redisConfig.port });
