@@ -29,7 +29,7 @@ export default function SignUp({ navigation }) {
     try {
       await api.post('/users', { fullname, email, password });
 
-      Alert.alert('Conta criada com sucesso!');
+      Alert.alert('Feito', 'Conta criada com sucesso');
 
       setLoading(false);
 
@@ -38,7 +38,7 @@ export default function SignUp({ navigation }) {
       setLoading(false);
 
       Alert.alert(
-        'Ocorreu um erro enquanto a conta era criada. Tente novamente.',
+        'Ops', 'Ocorreu um erro enquanto a conta era criada. Tente novamente.',
       );
     }
   }

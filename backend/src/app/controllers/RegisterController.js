@@ -3,18 +3,15 @@ import { Op } from 'sequelize';
 import Register from '../models/Register';
 import Meetup from '../models/Meetup';
 import User from '../models/User';
-import Queue from '../../lib/Queue';
-import ConfirmationMail from '../jobs/ConfirmationMail';
+
+const kue = require('../../lib/kue');
+require('../../lib/worker');
 
 class RegisterController {
   async store(req, res) {
-
     const { email, meetupId } = req.body;
-    console.log(email);
-    console.log(meetupId);
-
     const user = await User.findOne({ where: { email } });
-    console.log(user);
+
     const checkIfAlreadyRegistered = await Register.findOne({
       where: {
         user_id: user.id,
@@ -22,7 +19,6 @@ class RegisterController {
         canceled_at: { [Op.is]: null },
       },
     });
-    console.log(checkIfAlreadyRegistered);
 
     if (checkIfAlreadyRegistered) {
       return res.status(401).json({ error: 'Você já participa deste evento' });
@@ -97,15 +93,21 @@ class RegisterController {
         },
       ],
     });
+
     try {
-
-      await Queue.add(ConfirmationMail.key, {
-        mailData,
-      });
-
+      const args = {
+        jobName: 'sendEmail',
+        time: (10000),
+        params: {
+          email: mailData.meetup.user.email,
+          subject: `[${mailData.meetup.name}] Nova inscrição para o evento foi realizada`,
+          body:
+            `${mailData.user.fullname} acabou de se inscrever.`,
+        },
+      };
+      kue.scheduleJob(args);
       return res.json(register);
-    }
-    catch (erro) { console.log(erro.Message); }
+    } catch (erro) { console.log(erro.Message); }
   }
 
   async delete(req, res) {

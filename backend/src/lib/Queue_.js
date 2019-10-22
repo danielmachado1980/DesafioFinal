@@ -23,6 +23,7 @@ class Queue {
   }
 
   add(queue, job) {
+    console.log(`Esse é o Job ${job}`);
     return this.queues[queue].bee.createJob(job).save();
   }
 
