@@ -36,7 +36,7 @@ const send = async (args) => {
 
 
     // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
+    transporter.sendMail(mailOptions, (error) => {
       if (error) {
         return console.log(`Error while sending mail: ${error}`);
       }
