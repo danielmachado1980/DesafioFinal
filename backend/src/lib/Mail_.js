@@ -6,9 +6,7 @@ import mailConfig from '../config/mail';
 
 class Mail {
   constructor() {
-    const {
-      host, port, secure, auth,
-    } = mailConfig;
+    const { host, port, secure, auth } = mailConfig;
 
     this.transporter = nodemailer.createTransport({
       host,
@@ -34,11 +32,12 @@ class Mail {
           extname: '.hbs',
         }),
         extName: '.hbs',
-      }),
+      })
     );
   }
 
   sendMail(message) {
+    console.log('enviando MAIL');
     return this.transporter.sendMail({
       ...mailConfig.default,
       ...message,

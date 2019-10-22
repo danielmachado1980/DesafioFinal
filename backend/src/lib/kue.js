@@ -1,8 +1,8 @@
-let kue = require('kue');
+var kue = require('kue');
 
-let Queue = kue.createQueue();
+var Queue = kue.createQueue();
 
-const scheduleJob = (data) => {
+let scheduleJob = data => {
   Queue.createJob(data.jobName, data.params)
     .attempts(3)
     .delay(data.time - Date.now())

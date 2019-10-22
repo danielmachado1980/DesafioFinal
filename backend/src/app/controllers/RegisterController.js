@@ -21,7 +21,9 @@ class RegisterController {
     });
 
     if (checkIfAlreadyRegistered) {
-      return res.status(401).json({ error: 'Você já participa deste evento' });
+      return res
+        .status(401)
+        .json({ error: 'Você já participa deste evento' });
     }
 
     const meetup = await Meetup.findByPk(req.body.meetupId);
@@ -31,7 +33,9 @@ class RegisterController {
     }
 
     if (meetup.user_id === req.userId) {
-      return res.status(401).json({ error: 'Não é possível se inscrever para seu próprio evento' });
+      return res.status(401).json({
+        error: 'Não é possível se inscrever para seu próprio evento',
+      });
     }
 
     if (!isAfter(meetup.date, new Date())) {
@@ -57,9 +61,9 @@ class RegisterController {
     });
 
     if (countMeetupsInDate > 0) {
-      return res
-        .status(400)
-        .json({ error: 'Não é possível se inscrever em eventos concorrentes' });
+      return res.status(400).json({
+        error: 'Não é possível se inscrever em eventos concorrentes',
+      });
     }
 
     const register = await Register.create({
@@ -97,17 +101,18 @@ class RegisterController {
     try {
       const args = {
         jobName: 'sendEmail',
-        time: (10000),
+        time: 20000,
         params: {
           email: mailData.meetup.user.email,
           subject: `[${mailData.meetup.name}] Nova inscrição para o evento foi realizada`,
-          body:
-            `${mailData.user.fullname} acabou de se inscrever.`,
+          body: `${mailData.user.fullname} acabou de se inscrever.`,
         },
       };
       kue.scheduleJob(args);
       return res.json(register);
-    } catch (erro) { console.log(erro.Message); }
+    } catch (erro) {
+      console.log(erro.Message);
+    }
   }
 
   async delete(req, res) {

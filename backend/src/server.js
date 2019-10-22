@@ -4,13 +4,16 @@ import mailConfig from './config/mail';
 
 const redis = require('redis');
 
-const redisClient = redis.createClient({ host: redisConfig.host, port: redisConfig.port });
+require('./lib/worker');
+
+const redisClient = redis.createClient({
+  host: redisConfig.host,
+  port: redisConfig.port,
+});
 
 const nodemailer = require('nodemailer');
 
-const {
-  host, port, secure, auth,
-} = mailConfig;
+const { host, port, secure, auth } = mailConfig;
 
 redisClient.on('ready', () => {
   console.log('Redis is ready');
@@ -33,7 +36,7 @@ const transporter = nodemailer.createTransport({
 transporter.verify((error, success) => {
   if (error) {
     console.log(error);
-  } else {
+  } else if (success) {
     console.log('Server is ready to take our messages');
   }
 });

@@ -2,55 +2,37 @@ import mailConfig from '../config/mail';
 
 const nodemailer = require('nodemailer');
 
-const send = async (args) => {
+const send = async args => {
   try {
-    const {
-      host, port, secure, auth,
-    } = mailConfig;
+    const { host, port, secure, auth, from } = mailConfig;
 
     const { email, subject, body } = args;
-    console.log(`Enviando email para...: ${email}`);
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure,
+      host, // Gmail Host
+      port, // Port
+      secure, // this is true as port is 465
       auth,
     });
 
-    transporter.verify((error) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Server is ready to take our messages');
-      }
-    });
-
     const mailOptions = {
-      from: 'Daniel Machado <danielgoncalves.machado@gmail.com>', // sender address
+      from, // sender address
       to: email, // list of receivers
       subject, // Subject line
       html: body, // plain text body
     };
 
-
     // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error) => {
+    transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        return console.log(`Error while sending mail: ${error}`);
+        console.log(`Error while sending mail: ${error}`);
       }
-      //console.log('Message sent: %s', info.messageId);
-
-      // transporter.close(); // shut down the connection pool, no more messages.
+      console.log('Message sent: %s', info.messageId);
     });
 
-    //console.log('Message sent: %s', info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+    return true;
 
-    // Preview only available when sending through an Ethereal account
-    //console.log(nodemailer.getTestMessageUrl(info));
-    return nodemailer.getTestMessageUrl('Message to');
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   } catch (err) {
     console.log(`Error: ${err}`);

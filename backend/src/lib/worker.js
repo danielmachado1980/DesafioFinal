@@ -1,12 +1,11 @@
 // Start Redis worker
-const kue = require('kue');
+var kue = require('kue');
 
-const Queue = kue.createQueue();
-const nodemailer = require('./nodemailer');
+var Queue = kue.createQueue();
+var nodemailer = require('./nodemailer');
 
 Queue.process('sendEmail', async (job, done) => {
-  const { data } = job;
-  console.log(`Imprimindo os dados do job ${data.email}`);
+  let { data } = job;
   await nodemailer.send(data);
   done();
 });
