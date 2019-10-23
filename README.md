@@ -21,25 +21,25 @@ Execute git clone https://github.com/danielmachado1980/DesafioFinal.git
        npx sequelize-cli db:migrate
    ```
 
-# backend
+## backend
 
-execute
+Dentro do projeto, execute:
 
 ```sh
 yarn dev
 ```
 
-# frontend
+## frontend
 
-execute
+Dentro do projeto, execute:
 
 ```sh
 npm start
 ```
 
-# mobile (testado somente no Android)
+## mobile (testado somente no Android)
 
-execute
+Dentro do projeto, execute:
 
 ```sh
 react-native run-android
