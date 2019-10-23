@@ -14,8 +14,8 @@ Execute git clone https://github.com/danielmachado1980/DesafioFinal.git
 
 1. Execute yarn install para os três projetos: backend, frontend e mobile
 2. Crie uma base de dados chamada meetapp (MySql)
-3. Renomeie o arquivo .env.example para .env no projeto backend e define as propriedades adequadamente
-4. Baixe a última versão do Redis em https://github.com/microsoftarchive/redis/releases
+3. Renomeie o arquivo .env.example para .env nos projetos backend e mobile e defina as propriedades adequadamente
+4. Baixe a última versão do Redis em https://github.com/microsoftarchive/redis/releases, e descompacte o arquivo
 5. Execute as migrations no projeto backend:
    ```sh
        npx sequelize-cli db:migrate
@@ -23,7 +23,7 @@ Execute git clone https://github.com/danielmachado1980/DesafioFinal.git
 
 ## backend
 
-Dentro do projeto, execute:
+Execute redis.exe na pasta descompactada do Redis e dentro do projeto, execute:
 
 ```sh
 yarn dev

@@ -6,5 +6,5 @@ export default {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  from: 'MeetApp - Organização de Eventos <noreply@meetapp.com',
+  from: '©MeetApp - Organização de Eventos <noreply@meetapp.com',
 };

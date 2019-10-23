@@ -32,8 +32,6 @@ const send = async args => {
     });
 
     return true;
-
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   } catch (err) {
     console.log(`Error: ${err}`);
   }
