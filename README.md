@@ -16,27 +16,30 @@ Execute git clone https://github.com/danielmachado1980/DesafioFinal.git
 2. Crie uma base de dados chamada meetapp (MySql)
 3. Renomeie o arquivo .env.example para .env no projeto backend e define as propriedades adequadamente
 4. Baixe a última versão do Redis em https://github.com/microsoftarchive/redis/releases
-5. Execute as migrations: npx sequelize-cli db:migrate
+5. Execute as migrations no projeto backend:
+   ```sh
+       npx sequelize-cli db:migrate
+   ```
 
-# backend
+## backend
 
-execute
+Dentro do projeto, execute:
 
 ```sh
 yarn dev
 ```
 
-# frontend
+## frontend
 
-execute
+Dentro do projeto, execute:
 
 ```sh
 npm start
 ```
 
-# mobile (testado somente no Android)
+## mobile (testado somente no Android)
 
-execute
+Dentro do projeto, execute:
 
 ```sh
 react-native run-android
@@ -47,3 +50,5 @@ react-native run-android
 Xampp para Windows [Web e Database](https://www.apachefriends.org/pt_br/download.html).
 
 Redis.io [Database in-memory](https://redis.io/download).
+
+Reatotron for [Debug](https://github.com/infinitered/reactotron).
