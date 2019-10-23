@@ -47,7 +47,7 @@ react-native run-android
 
 ## links importantes
 
-Xampp para Windows [Web e Database](https://www.apachefriends.org/pt_br/download.html).
+Xampp for Windows [Web e Database](https://www.apachefriends.org/pt_br/download.html).
 
 Redis.io [Database in-memory](https://redis.io/download).
 
