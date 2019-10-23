@@ -51,6 +51,6 @@ Xampp para Windows [Web e Database](https://www.apachefriends.org/pt_br/download
 
 Redis.io [Database in-memory](https://redis.io/download).
 
-Reatotron for [Debug](https://github.com/infinitered/reactotron).
+Reactotron for [Debug](https://github.com/infinitered/reactotron).
 
 Genymotion for Fun [Emulador](https://www.genymotion.com/fun-zone/).
