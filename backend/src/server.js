@@ -24,13 +24,10 @@ redisClient.on('error', () => {
 });
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.googlemail.com', // Gmail Host
-  port: 465, // Port
-  secure: true, // this is true as port is 465
-  auth: {
-    user: 'danielgoncalves.machado@gmail.com',
-    pass: 'dagomaeh@5300',
-  },
+  host, // Gmail Host
+  port, // Port
+  secure, // this is true as port is 465
+  auth,
 });
 
 transporter.verify((error, success) => {
