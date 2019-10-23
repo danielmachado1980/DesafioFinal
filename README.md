@@ -25,3 +25,19 @@ execute
 ```sh
 yarn dev
 ```
+
+# frontend
+
+execute
+
+```sh
+npm start
+```
+
+# mobile (testado somente no Android)
+
+execute
+
+```sh
+react-native run-android
+```
