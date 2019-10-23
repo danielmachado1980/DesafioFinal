@@ -47,3 +47,5 @@ react-native run-android
 Xampp para Windows [Web e Database](https://www.apachefriends.org/pt_br/download.html).
 
 Redis.io [Database in-memory](https://redis.io/download).
+
+Reatotron for [Debug](https://github.com/infinitered/reactotron).
