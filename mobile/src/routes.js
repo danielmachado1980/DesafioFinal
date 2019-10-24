@@ -8,34 +8,37 @@ import Dashboard from './pages/Dashboard';
 import Subscriptions from './pages/Subscriptions';
 import Profile from './pages/Profile';
 
-export default (isSigned = false) => createAppContainer(
-  createSwitchNavigator(
-    {
-      Sign: createSwitchNavigator({
-        SignIn,
-        SignUp,
-      }),
-      App: createBottomTabNavigator(
-        {
-          Dashboard,
-          Subscriptions,
-          Profile,
-        },
-        {
-          resetOnBlur: true,
-          tabBarOptions: {
-            keyboardHidesTabBar: true,
-            activeTintColor: '#fff',
-            inactiveTintColor: 'rgba(255, 255, 255, 0.6)',
-            style: {
-              backgroundColor: '#2B1A2F',
-            },
+export default (isSigned = false) =>
+  createAppContainer(
+    createSwitchNavigator(
+      {
+        Sign: createSwitchNavigator({
+          SignIn,
+          SignUp,
+        }),
+        App: createBottomTabNavigator(
+          {
+            Dashboard,
+            Subscriptions,
+            Profile,
           },
-        },
-      ),
-    },
-    {
-      initialRouteName: isSigned ? 'App' : 'Sign',
-    },
-  ),
-);
+          {
+            resetOnBlur: true,
+            tabBarOptions: {
+              keyboardHidesTabBar: true,
+              activeTintColor: '#fff',
+              inactiveTintColor: 'rgba(255, 255, 255, 0.6)',
+              style: {
+                backgroundColor: '#2B1A2F',
+                height: 60,
+              },
+              labelStyle: { marginTop: -5, marginBottom: 10 },
+            },
+          }
+        ),
+      },
+      {
+        initialRouteName: isSigned ? 'App' : 'Sign',
+      }
+    )
+  );
