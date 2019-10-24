@@ -53,4 +53,4 @@ Redis.io [Database in-memory](https://redis.io/download).
 
 Reactotron for [Debug](https://github.com/infinitered/reactotron).
 
-Genymotion for Fun [Emulador](https://www.genymotion.com/fun-zone/).
+Genymotion for Fun [Emulator](https://www.genymotion.com/fun-zone/).
